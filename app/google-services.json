@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "926340721133",
+    "project_id": "gasstationpos",
+    "storage_bucket": "gasstationpos.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926340721133:android:d8028376effcef2651dfe4",
+        "android_client_info": {
+          "package_name": "com.incognito.gasstationpos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB48yM3b3sq3q2olRt3iD8-rkfiaXmmt4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
