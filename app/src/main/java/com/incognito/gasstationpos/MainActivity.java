@@ -1,6 +1,7 @@
 package com.incognito.gasstationpos;
 
 import android.content.Context;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -75,6 +76,11 @@ public class MainActivity extends AppCompatActivity {
                 pay();
             }
         });
+
+        // Register the receiver
+        IntentFilter filter = new IntentFilter();
+        MyReceiver ecrReceiver = new MyReceiver();
+        registerReceiver(ecrReceiver, filter);
     }
     // Method to add an Item
     private void addItem() {
