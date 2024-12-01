@@ -1,11 +1,9 @@
-package com.incognito.gasstationpos.utils;
+package com.incognito.gasstationpos;
 
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
-
-import com.incognito.gasstationpos.MainActivity;
 
 public class MyApp  extends Application {
     public static Activity currentActivity = null;
