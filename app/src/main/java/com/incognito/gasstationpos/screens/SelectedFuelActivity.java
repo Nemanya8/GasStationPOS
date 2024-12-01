@@ -2,7 +2,6 @@ package com.incognito.gasstationpos.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -35,11 +34,10 @@ public class SelectedFuelActivity extends AppCompatActivity {
         Intent intent = getIntent();
         fuelType = intent.getStringExtra("FUEL_TYPE");
 
-        // Set image and price per liter based on selected fuel type
         switch (fuelType) {
             case "BMB95":
                 imgSelectedFuel.setImageResource(R.drawable.bmb95);
-                pricePerLiter = 145; // Example price in dinars
+                pricePerLiter = 145;
                 break;
             case "BMB100":
                 imgSelectedFuel.setImageResource(R.drawable.bmb100);
@@ -55,39 +53,38 @@ public class SelectedFuelActivity extends AppCompatActivity {
                 break;
         }
 
-        // Initial liters and price setup
-        edtLiters.setText("0");
-
+        edtLiters.setText("0 L");
         btnBack.setOnClickListener(v -> onBackPressed());
-
         btnNext.setOnClickListener(v -> {
             Intent nextIntent = new Intent(SelectedFuelActivity.this, ItemsActivity.class);
             startActivity(nextIntent);
         });
 
-        // Increment liters by 1
         btnPlus.setOnClickListener(v -> {
-            int liters = Integer.parseInt(edtLiters.getText().toString());
-            edtLiters.setText(String.valueOf(liters + 1));
+            int liters = Integer.parseInt(edtLiters.getText().toString().replace(" L", ""));
+            liters++;
+            edtLiters.setText(liters + " L");
             updatePrice();
+            btnNext.setEnabled(liters > 0);
         });
 
-        // Decrement liters by 1
         btnMinus.setOnClickListener(v -> {
-            int liters = Integer.parseInt(edtLiters.getText().toString());
+            int liters = Integer.parseInt(edtLiters.getText().toString().replace(" L", ""));
             if (liters > 0) {
-                edtLiters.setText(String.valueOf(liters - 1));
+                liters--;
+                edtLiters.setText(liters + " L");
                 updatePrice();
+                btnNext.setEnabled(liters > 0);
             } else {
-                Toast.makeText(SelectedFuelActivity.this, "Cannot have less than 0 liters", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Cannot have less than 0 liters", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    // Method to update the price based on liters
     private void updatePrice() {
-        int liters = Integer.parseInt(edtLiters.getText().toString());
+        int liters = Integer.parseInt(edtLiters.getText().toString().replace(" L", ""));
         double totalPrice = liters * pricePerLiter;
         txtPrice.setText("Cena: " + totalPrice + " RSD");
     }
 }
+

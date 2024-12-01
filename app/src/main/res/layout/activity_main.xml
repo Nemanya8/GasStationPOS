@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:gravity="center_vertical">
 
     <!-- First ImageButton for bmb95 -->
     <ImageButton
@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/bmb95"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:contentDescription="BMB95 Image"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/bmb100"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:contentDescription="BMB100 Image"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/dizel"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:contentDescription="Dizel Image"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/dizel_premium"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:contentDescription="Dizel Premium Image"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
