@@ -5,9 +5,11 @@ import android.util.Log;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.incognito.gasstationpos.models.GlobalData;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.incognito.gasstationpos.models.Item;
 import com.incognito.gasstationpos.models.Receipt;
+import com.incognito.gasstationpos.models.GlobalData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -127,8 +129,7 @@ public class FirestoreService {
                 });
     }
 
-    // Read: Get an item by ID
-    public void getItem(String itemId, FirestoreCallback<Item> callback) {
+    public void getItemById(String itemId, FirestoreCallback<Item> callback) {
         db.collection("items")
                 .document(itemId)
                 .get()
@@ -146,6 +147,9 @@ public class FirestoreService {
                     if (callback != null) callback.onFailure(e);
                 });
     }
+
+
+
 
     // Read: Get all items
     public void getAllItems(FirestoreCallback<List<Item>> callback) {
@@ -194,6 +198,19 @@ public class FirestoreService {
                     Log.e("FirestoreService", "Error deleting item", e);
                 });
     }
+
+    // add item to receipt
+        public void addItemToReceipt(Item item, double value) {
+            if (item == null) {
+                Log.e("FirestoreService", "Item is null, cannot add");
+                return;
+            }
+
+            // Use the global storage class
+            GlobalData.getInstance().getGlobalReceipt().addItem(item);
+            GlobalData.getInstance().getGlobalReceipt().addValue(item.getValue() * value);
+            Log.d("FirestoreService", "Item added to GlobalItemStorage: " + item);
+        }
 
     // -------------------- Callback Interface --------------------
 
