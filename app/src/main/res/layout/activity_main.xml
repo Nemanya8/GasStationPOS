@@ -53,4 +53,13 @@
         android:adjustViewBounds="true"
         android:background="@null" />
 
+    <Button
+        android:id="@+id/btnAddNewItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add New Item"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="16dp" />
+
+
 </LinearLayout>
