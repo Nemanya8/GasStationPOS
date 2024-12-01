@@ -1,11 +1,10 @@
 package com.incognito.gasstationpos;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,12 +24,17 @@ public class MainActivity extends AppCompatActivity {
     private PosService posService;
     private Button btnAddItem, btnShowAllItems, btnAddReceipt, btnPay;
 
+import com.incognito.gasstationpos.screens.SelectedFuelActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    private ImageButton btnImageButtonBmb95, btnImageButtonBmb100, btnImageButtonDizel, btnImageButtonDizelPremium;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Initialize FirestoreService
         firestoreService = new FirestoreService();
 
         // Intialize PosService
@@ -38,111 +42,45 @@ public class MainActivity extends AppCompatActivity {
         Context appContext = getApplicationContext();
         posService = new PosService(packageName, appContext);
 
-        // Initialize buttons
-        btnAddItem = findViewById(R.id.btnAddItem);
-        btnShowAllItems = findViewById(R.id.btnShowAllItems);
-        btnAddReceipt = findViewById(R.id.btnAddReceipt);
-        btnPay = findViewById(R.id.btnPay);
+        // Initialize ImageButtons
+        btnImageButtonBmb95 = findViewById(R.id.btnImageButtonBmb95);
+        btnImageButtonBmb100 = findViewById(R.id.btnImageButtonBmb100);
+        btnImageButtonDizel = findViewById(R.id.btnImageButtonDizel);
+        btnImageButtonDizelPremium = findViewById(R.id.btnImageButtonDizelPremium);
 
-        // Add Item button
-        btnAddItem.setOnClickListener(new View.OnClickListener() {
+        // Set click listeners for the ImageButtons
+        btnImageButtonBmb95.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addItem();
+                navigateToSelectedFuel("BMB95");
             }
         });
 
-        // Show All Items button
-        btnShowAllItems.setOnClickListener(new View.OnClickListener() {
+        btnImageButtonBmb100.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showAllItems();
+                navigateToSelectedFuel("BMB100");
             }
         });
 
-        // Add Receipt button
-        btnAddReceipt.setOnClickListener(new View.OnClickListener() {
+        btnImageButtonDizel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addReceipt();
+                navigateToSelectedFuel("Dizel");
             }
         });
 
-        // Pay button
-        btnPay.setOnClickListener(new View.OnClickListener() {
+        btnImageButtonDizelPremium.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pay();
-            }
-        });
-    }
-    // Method to add an Item
-    private void addItem() {
-        Item newItem = new Item("Test Item", "item_image.png", 9.99, 10);
-        firestoreService.addItem(newItem);
-
-        Toast.makeText(this, "Item added", Toast.LENGTH_SHORT).show();
-    }
-
-    // Method to show all items
-    private void showAllItems() {
-        firestoreService.getAllItems(new FirestoreService.FirestoreCallback<List<Item>>() {
-            @Override
-            public void onSuccess(List<Item> result) {
-                // For now, we'll just log the result
-                for (Item item : result) {
-                    Log.d("MainActivity", "Item: " + item.getName() + ", Value: " + item.getValue());
-                }
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-                Log.e("MainActivity", "Error fetching items", e);
-                Toast.makeText(MainActivity.this, "Error fetching items", Toast.LENGTH_SHORT).show();
+                navigateToSelectedFuel("DizelPremium");
             }
         });
     }
 
-    // Method to add a Receipt
-    private void addReceipt() {
-        // Creating an example receipt
-        Receipt newReceipt = new Receipt(System.currentTimeMillis());
-
-        // Create an item and add it to the receipt's items list
-        Item item = new Item("Test Item", "item_image.png", 9.99, 10);
-        newReceipt.getItems().add(item); // This should work now
-
-        firestoreService.addReceipt(newReceipt);
-
-        Toast.makeText(this, "Receipt added", Toast.LENGTH_SHORT).show();
+    private void navigateToSelectedFuel(String fuelType) {
+        Intent intent = new Intent(MainActivity.this, SelectedFuelActivity.class);
+        intent.putExtra("FUEL_TYPE", fuelType);  // Pass the selected fuel type to the next activity
+        startActivity(intent);
     }
-
-   private void pay() {
-//        posService.Pay(new BigDecimal(4761));
-//       try {
-//           Thread.sleep(30000); // Sleep for 10 seconds (10000 milliseconds)
-//       } catch (InterruptedException e) {
-//           e.printStackTrace();
-//       }
-       firestoreService.getItemById("DCcS8Zsnuav3VNOImM85", new FirestoreService.FirestoreCallback<Item>() {
-           @Override
-           public void onSuccess(Item result) {
-               Log.d("MainActivity", "Item: " + result.getName() + ", Value: " + result.getValue());
-               GlobalData.getInstance().getGlobalReceipt().addItem(result);
-               GlobalData.getInstance().getGlobalReceipt().addValue(result.getValue() * result.getQuantity());
-//               GlobalData data =  GlobalData.getInstance();
-           }
-
-           @Override
-           public void onFailure(Exception e) {
-               Log.e("MainActivity", "Error fetching item", e);
-               Toast.makeText(MainActivity.this, "Error fetching item", Toast.LENGTH_SHORT).show();
-           }
-       });
-
-       posService.PrintReceipt();
-    }
-
-
-
 }

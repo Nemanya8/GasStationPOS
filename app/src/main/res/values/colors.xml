@@ -2,6 +2,14 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="blue">#2196F3</color> <!-- Blue color -->
-    <color name="orange">#FF9800</color> <!-- Orange color -->
+    <color name="blue">#2196F3</color>
+    <color name="orange">#FF9800</color>
+
+    <color name="deep_blue">#264653</color>
+    <color name="golden_yellow">#F4A261</color>
+    <color name="brick_red">#E76F51</color>
+    <color name="soft_gray">#F0F4F8</color>
+    <color name="forest_green">#2A9D8F</color>
+    <color name="dark_charcoal">#333333</color>
+    <color name="light_gray">#B2B2B2</color>
 </resources>
