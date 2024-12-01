@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     // Method to add an Item
     private void addItem() {
         Item newItem = new Item("Test Item", "item_image.png", 9.99, 10);
@@ -87,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     // Method to add a Receipt
     private void addReceipt() {
         // Creating an example receipt
-        Receipt newReceipt = new Receipt( 100.0, System.currentTimeMillis());
+        Receipt newReceipt = new Receipt(System.currentTimeMillis());
 
         // Create an item and add it to the receipt's items list
         Item item = new Item("Test Item", "item_image.png", 9.99, 10);

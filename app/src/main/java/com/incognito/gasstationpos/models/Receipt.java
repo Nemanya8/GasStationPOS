@@ -12,10 +12,10 @@ public class Receipt {
     private long timestamp;
 
     // Constructor
-    public Receipt(double value, long timestamp) {
+    public Receipt(long timestamp) {
         this.id = UUID.randomUUID().toString();
         this.items = new ArrayList<>(); // Initialize the list here
-        this.value = value;
+        this.value = 0;
         this.timestamp = timestamp;
     }
 
@@ -27,6 +27,19 @@ public class Receipt {
     public void setId(String  id) {
 
         this.id = (id != null) ? id : UUID.randomUUID().toString();
+
+    }
+
+    public void addItem(Item item){
+        this.items.add(item);
+    }
+
+    public void addValue(double value){
+        this.value += value;
+    }
+
+    public void generateJsonRequest(){
+            
 
     }
 
