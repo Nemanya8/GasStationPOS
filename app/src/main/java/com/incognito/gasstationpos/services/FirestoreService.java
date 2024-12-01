@@ -47,7 +47,7 @@ public class FirestoreService {
                         Receipt receipt = documentSnapshot.toObject(Receipt.class);
                         if (callback != null) callback.onSuccess(receipt);
                     } else {
-                        Log.e("FirestoreService", "No receipt found with ID: " + receiptId);
+                        Log.e("FirestoreService", "No receipt found with ID: " + receiptId.toString());
                         if (callback != null) callback.onFailure(new Exception("Receipt not found"));
                     }
                 })

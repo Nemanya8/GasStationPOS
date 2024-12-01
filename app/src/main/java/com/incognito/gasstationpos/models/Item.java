@@ -1,8 +1,10 @@
 package com.incognito.gasstationpos.models;
+import java.util.UUID;
+
 
 public class Item {
 
-    private String id;
+    private String  id;
     private String name;
     private String image;
     private double value;
@@ -14,8 +16,8 @@ public class Item {
     }
 
     // Constructor with parameters
-    public Item(String id, String name, String image, double value, int quantity) {
-        this.id = id;
+    public Item(String name, String image, double value, int quantity) {
+        this.id = UUID.randomUUID().toString();
         this.name = name;
         this.image = image;
         this.value = value;
@@ -23,12 +25,13 @@ public class Item {
     }
 
     // Getters and setters
-    public String getId() {
+    public String  getId() {
         return id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.id = (id != null) ? id : UUID.randomUUID().toString();
+
     }
 
     public String getName() {
