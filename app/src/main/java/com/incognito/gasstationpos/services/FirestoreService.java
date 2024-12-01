@@ -126,15 +126,13 @@ public class FirestoreService {
                 });
     }
 
-    // Read: Get an item by ID
-    public void getItem(String itemId, double value, FirestoreCallback<Item> callback) {
+    public void getItemById(String itemId, FirestoreCallback<Item> callback) {
         db.collection("items")
                 .document(itemId)
                 .get()
                 .addOnSuccessListener(documentSnapshot -> {
                     if (documentSnapshot.exists()) {
                         Item item = documentSnapshot.toObject(Item.class);
-                        addItemToReceipt(item, value);
                         if (callback != null) callback.onSuccess(item);
                     } else {
                         Log.e("FirestoreService", "No item found with ID: " + itemId);
@@ -146,6 +144,9 @@ public class FirestoreService {
                     if (callback != null) callback.onFailure(e);
                 });
     }
+
+
+
 
     // Read: Get all items
     public void getAllItems(FirestoreCallback<List<Item>> callback) {
@@ -203,8 +204,8 @@ public class FirestoreService {
             }
 
             // Use the global storage class
-            GlobalData.getGlobalReceipt().addItem(item);
-            GlobalData.getGlobalReceipt().addValue(item.getValue() * value);
+            GlobalData.getInstance().getGlobalReceipt().addItem(item);
+            GlobalData.getInstance().getGlobalReceipt().addValue(item.getValue() * value);
             Log.d("FirestoreService", "Item added to GlobalItemStorage: " + item);
         }
 

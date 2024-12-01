@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.incognito.gasstationpos.models.GlobalData;
 import com.incognito.gasstationpos.models.Item;
 import com.incognito.gasstationpos.models.Receipt;
 import com.incognito.gasstationpos.services.FirestoreService;
@@ -16,6 +17,7 @@ import com.incognito.gasstationpos.services.PosService;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -116,12 +118,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
    private void pay() {
-        posService.Pay(new BigDecimal(4761));
-       try {
-           Thread.sleep(30000); // Sleep for 10 seconds (10000 milliseconds)
-       } catch (InterruptedException e) {
-           e.printStackTrace();
-       }
+//        posService.Pay(new BigDecimal(4761));
+//       try {
+//           Thread.sleep(30000); // Sleep for 10 seconds (10000 milliseconds)
+//       } catch (InterruptedException e) {
+//           e.printStackTrace();
+//       }
+       firestoreService.getItemById("DCcS8Zsnuav3VNOImM85", new FirestoreService.FirestoreCallback<Item>() {
+           @Override
+           public void onSuccess(Item result) {
+               Log.d("MainActivity", "Item: " + result.getName() + ", Value: " + result.getValue());
+               GlobalData.getInstance().getGlobalReceipt().addItem(result);
+               GlobalData.getInstance().getGlobalReceipt().addValue(result.getValue() * result.getQuantity());
+//               GlobalData data =  GlobalData.getInstance();
+           }
+
+           @Override
+           public void onFailure(Exception e) {
+               Log.e("MainActivity", "Error fetching item", e);
+               Toast.makeText(MainActivity.this, "Error fetching item", Toast.LENGTH_SHORT).show();
+           }
+       });
+
        posService.PrintReceipt();
     }
 

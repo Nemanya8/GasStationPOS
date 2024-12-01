@@ -5,13 +5,19 @@ import android.content.Intent;
 import android.os.RemoteException;
 import android.util.Log;
 
+import com.google.gson.GsonBuilder;
+import com.incognito.gasstationpos.ecr.EcrDef;
 import com.incognito.gasstationpos.ecr.EcrJsonReq;
 import com.incognito.gasstationpos.ecr.EcrRequestTransactionType;
 import com.google.gson.Gson;
+import com.incognito.gasstationpos.models.GlobalData;
+import com.incognito.gasstationpos.models.Item;
+import com.incognito.gasstationpos.models.Receipt;
 import com.incognito.gasstationpos.transaction.TransactionData;
 import com.incognito.gasstationpos.utils.HashUtils;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 public class PosService {
 
@@ -32,30 +38,12 @@ public class PosService {
     }
 
     public void PrintReceipt() {
-        String jsonRequest = "{\n" +
-                "\t\"header\":{\n" +
-                "\t\t\"length\":300,\n" +
-                "\t\t\"hash\":\"9397e30d8f92da29d9c1016a3e0eab55c7874f5b1cc67e400ecfac233f82889234f41328b2df08066b3e692dcb6f028d56b0fd009fca18fdac9b5669f6775e71\",\n" +
-                "\t\t\"version\":\"1\"\n" +
-                "\t},\n" +
-                "\t\n" +
-                "\t\"request\":{\n" +
-                "\t\t\"command\":{\n" +
-                "\t\t\t\"printer\":{\n" +
-                "\t\t\t\t\"type\":\"QR\",\n" +
-                "\t\t\t\t\"data\":\"VGVzdCBRUiBjb2RlIHByaW50aW5nLiAKVGhpcyBpcyBzb21lIGxvbmcgdGVzdCB0aGF0IGlzIGdlbmVyYXRlZCBieSBkdW1teSBFQ1IgYXBwbGljYXRpb24uIApJdCBpcyB0aGVuIEJhc2U2NCBlbmNvZGVkIGFuZCBlbmNhcHN1bGF0ZWQgaW4gSlNPTiBFQ1IgcmVxdWVzdC4K\"\n" +
-                "\t\t\t}\n" +
-                "\t\t}\n" +
-                "\t}\n" +
-                "}";
+        ArrayList<EcrJsonReq.PrintLines> lines = new ArrayList<>();
+        prepareBillDataLines(lines);
+//        prepareTransactionReceiptLines(lines,);
 
-        try {
-            sendJsonStringToApos(jsonRequest, false);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        printReceipt(lines);
+
 
     }
 
@@ -135,4 +123,81 @@ public class PosService {
         }
         return s;
     }
+
+    private void printReceipt(ArrayList<EcrJsonReq.PrintLines> lines) {
+        EcrJsonReq ecrJsonReq = new EcrJsonReq();
+        ecrJsonReq.header = new EcrJsonReq.Header();
+        ecrJsonReq.request = new EcrJsonReq.Request();
+        ecrJsonReq.request.command = new EcrJsonReq.Command();
+        ecrJsonReq.request.command.printer = new EcrJsonReq.Printer();
+        ecrJsonReq.request.command.printer.type = EcrDef.printerTypeJson;
+        ecrJsonReq.request.command.printer.printLines = lines;
+
+        String tempRequest = "\"request\":"+new GsonBuilder().disableHtmlEscaping().create().toJson(ecrJsonReq.request);
+        String generatedSHA512 = HashUtils.performSHA512(tempRequest);
+
+        ecrJsonReq.header.version = "01";
+        ecrJsonReq.header.length = tempRequest.length();
+        ecrJsonReq.header.hash = generatedSHA512;
+
+        String jsonRequest = new GsonBuilder().disableHtmlEscaping().create().toJson(ecrJsonReq);
+
+        try {
+            sendJsonStringToApos(jsonRequest, false);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void addLine(ArrayList<EcrJsonReq.PrintLines> lines, String type, String style, String content){
+        EcrJsonReq.PrintLines line = new EcrJsonReq.PrintLines();
+        line.type = type;
+        line.style = style;
+        line.content = content;
+        lines.add(line);
+    }
+
+    private void prepareBillDataLines(ArrayList<EcrJsonReq.PrintLines> lines) {
+        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, " ");
+        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, " ");
+
+        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "================================");
+        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "ITEM");
+        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "  QUANTITY                AMOUNT");
+        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "================================");
+        GlobalData instance = GlobalData.getInstance();
+        Receipt receipt = GlobalData.getInstance().getGlobalReceipt();
+        for (Item item: GlobalData.getInstance().getGlobalReceipt().getItems()) {
+            BigDecimal itemValue = new BigDecimal(item.getValue());
+            BigDecimal itemQuantity = new BigDecimal(item.getQuantity());
+            BigDecimal itemTotal =  itemValue.multiply(itemQuantity);
+
+            addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, String.valueOf(item.getName()));
+            addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "  " + String.valueOf(item.getQuantity()) + "                                ".substring(0, 30 - String.valueOf(item.getQuantity()).length() - formatAmount(itemTotal, true).length()) + formatAmount(itemTotal, true));
+        }
+        BigDecimal billTotal = new BigDecimal(GlobalData.getInstance().getGlobalReceipt().getValue());
+        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "____________");
+        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "TOTAL                           ".substring(0, 32 - formatAmount(billTotal, true).length()) + formatAmount(billTotal, true));
+        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, " ");
+    }
+
+    void prepareTransactionReceiptLines(ArrayList<EcrJsonReq.PrintLines> lines, TransactionData transactionData){
+        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, " ");
+        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "================================");
+        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "          PAID BY CARD");
+        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "================================");
+        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "INVOICE: " + transactionData.invoice);
+        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "PAN:     " + transactionData.pan);
+        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "AMOUNT:  " + transactionData.base + " " + transactionData.currencyCode);
+        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "AUTH #:  " + transactionData.authorization);
+        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "____________");
+        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, " ");
+    }
+
+
 }
+
+
+
