@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Method to add an Item
     private void addItem() {
-        Item newItem = new Item("Test Item", "item_image.png", 9.99, 10);
+        Item newItem = new Item("Winston", "winston", 350, 10,"Cigarete");
         firestoreService.addItem(newItem);
 
         Toast.makeText(this, "Item added", Toast.LENGTH_SHORT).show();
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         Receipt newReceipt = new Receipt( 100.0, System.currentTimeMillis());
 
         // Create an item and add it to the receipt's items list
-        Item item = new Item("Test Item", "item_image.png", 9.99, 10);
+        Item item = new Item("Test Item", "item_image.png", 9.99, 10,"Primer");
         newReceipt.getItems().add(item); // This should work now
 
         firestoreService.addReceipt(newReceipt);

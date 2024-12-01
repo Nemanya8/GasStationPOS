@@ -9,6 +9,7 @@ public class Item {
     private String image;
     private double value;
     private int quantity;
+    private String category;
 
     // Default no-argument constructor for Firestore deserialization
     public Item() {
@@ -16,12 +17,13 @@ public class Item {
     }
 
     // Constructor with parameters
-    public Item(String name, String image, double value, int quantity) {
+    public Item(String name, String image, double value, int quantity,String category) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.image = image;
         this.value = value;
         this.quantity = quantity;
+        this.category = category;
     }
 
     // Getters and setters
@@ -64,5 +66,13 @@ public class Item {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
