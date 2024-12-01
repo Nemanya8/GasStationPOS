@@ -1,5 +1,6 @@
 package com.incognito.gasstationpos;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,13 +12,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.incognito.gasstationpos.models.Item;
 import com.incognito.gasstationpos.models.Receipt;
 import com.incognito.gasstationpos.services.FirestoreService;
+import com.incognito.gasstationpos.services.PosService;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private FirestoreService firestoreService;
-    private Button btnAddItem, btnShowAllItems, btnAddReceipt;
+    private PosService posService;
+    private Button btnAddItem, btnShowAllItems, btnAddReceipt, btnPay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +31,16 @@ public class MainActivity extends AppCompatActivity {
         // Initialize FirestoreService
         firestoreService = new FirestoreService();
 
+        // Intialize PosService
+        String packageName = getPackageName();
+        Context appContext = getApplicationContext();
+        posService = new PosService(packageName, appContext);
+
         // Initialize buttons
         btnAddItem = findViewById(R.id.btnAddItem);
         btnShowAllItems = findViewById(R.id.btnShowAllItems);
         btnAddReceipt = findViewById(R.id.btnAddReceipt);
+        btnPay = findViewById(R.id.btnPay);
 
         // Add Item button
         btnAddItem.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +63,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addReceipt();
+            }
+        });
+
+        // Pay button
+        btnPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pay();
             }
         });
     }
@@ -97,5 +115,17 @@ public class MainActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Receipt added", Toast.LENGTH_SHORT).show();
     }
+
+   private void pay() {
+        posService.Pay(new BigDecimal(4761));
+       try {
+           Thread.sleep(30000); // Sleep for 10 seconds (10000 milliseconds)
+       } catch (InterruptedException e) {
+           e.printStackTrace();
+       }
+       posService.PrintReceipt();
+    }
+
+
 
 }
