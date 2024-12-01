@@ -3,6 +3,7 @@ package com.incognito.gasstationpos.services;
 import android.content.Context;
 import android.content.Intent;
 import android.os.RemoteException;
+import android.util.Base64;
 import android.util.Log;
 
 import com.google.gson.GsonBuilder;
@@ -17,6 +18,7 @@ import com.incognito.gasstationpos.transaction.TransactionData;
 import com.incognito.gasstationpos.utils.HashUtils;
 
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class PosService {
@@ -181,6 +183,8 @@ public class PosService {
         addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "____________");
         addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "TOTAL                           ".substring(0, 32 - formatAmount(billTotal, true).length()) + formatAmount(billTotal, true));
         addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, " ");
+        String qrData = Base64.encodeToString(GlobalData.getInstance().getGlobalReceipt().getId().getBytes(StandardCharsets.UTF_8), Base64.DEFAULT);
+        addLine(lines, EcrDef.lineTypeQr, EcrDef.lineStyleCondensed, qrData);
     }
 
     void prepareTransactionReceiptLines(ArrayList<EcrJsonReq.PrintLines> lines, TransactionData transactionData){

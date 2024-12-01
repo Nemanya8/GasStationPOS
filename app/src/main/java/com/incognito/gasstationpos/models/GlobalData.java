@@ -10,8 +10,8 @@ public class GlobalData {
     private GlobalData() {
         //TODO: FIX
         globalReceipt = new Receipt(System.currentTimeMillis());
-        Item item1 = new Item("1", "Coca Cola", 60,  100);
-        Item item2 = new Item("2", "Pepsi", 50,  100);
+        Item item1 = new Item("Coca Cola", "Coca Cola", 60,  100);
+        Item item2 = new Item("Pepsi", "Pepsi", 50,  100);
         globalReceipt.addItem(item1);
         globalReceipt.addItem(item2);
     }
