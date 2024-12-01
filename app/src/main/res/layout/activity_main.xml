@@ -1,136 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <!-- Benzin 95 Button (Blue) -->
     <Button
-        android:id="@+id/btnBenzin95"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Benzin 95"
-        android:backgroundTint="@color/blue"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        android:drawablePadding="16dp"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="32dp" />
-
-    <!-- Premium Benzin 100 Button (Orange) -->
-    <Button
-        android:id="@+id/btnPremiumBenzin100"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Premium Benzin 100"
-        android:backgroundTint="@color/orange"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        android:drawablePadding="16dp"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnBenzin95"
-        android:layout_marginTop="16dp" />
-
-    <!-- Dizel Button (Blue) -->
-    <Button
-        android:id="@+id/btnDizel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Dizel"
-        android:backgroundTint="@color/blue"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        android:drawablePadding="16dp"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnPremiumBenzin100"
-        android:layout_marginTop="16dp" />
-
-    <!-- Premium Dizel Button (Orange) -->
-    <Button
-        android:id="@+id/btnPremiumDizel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Premium Dizel"
-        android:backgroundTint="@color/orange"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        android:drawablePadding="16dp"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnDizel"
-        android:layout_marginTop="16dp" />
-
-    <!-- + Button -->
-    <Button
-        android:id="@+id/btnPlus"
+        android:id="@+id/btnAddItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+"
-        android:textSize="24sp"
-        android:layout_marginTop="32dp"
-        android:padding="16dp"
-        android:textColor="@android:color/white"
-        android:backgroundTint="@color/blue"
-        app:layout_constraintTop_toBottomOf="@id/btnPremiumDizel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:text="Add Item" />
 
-    <!-- - Button -->
     <Button
-        android:id="@+id/btnMinus"
+        android:id="@+id/btnShowAllItems"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="-"
-        android:textSize="24sp"
-        android:layout_marginTop="16dp"
-        android:padding="16dp"
-        android:textColor="@android:color/white"
-        android:backgroundTint="@color/blue"
-        app:layout_constraintTop_toBottomOf="@id/btnPlus"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:text="Show All Items" />
 
-    <!-- TextView to show current value -->
-    <TextView
-        android:id="@+id/tvValue"
+    <Button
+        android:id="@+id/btnAddReceipt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="500 RSD"
-        android:textSize="32sp"
-        android:textColor="@android:color/black"
-        android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@id/btnMinus"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:text="Add Receipt" />
 
-    <!-- Dalje Button -->
-    <Button
-        android:id="@+id/btnDalje"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Dalje"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-        android:backgroundTint="@color/orange"
-        android:textColor="@android:color/white"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvValue"
-        android:layout_marginTop="32dp" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

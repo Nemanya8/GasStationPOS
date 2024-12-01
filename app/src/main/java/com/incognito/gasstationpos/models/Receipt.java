@@ -1,16 +1,21 @@
 package com.incognito.gasstationpos.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Receipt {
 
     private String id;
-    private String name;
-    private double price;
+    private List<Item> items; // This will hold the items for the receipt
+    private double value;
+    private long timestamp;
 
     // Constructor
-    public Receipt(String id, String name, double price) {
+    public Receipt(String id, double value, long timestamp) {
         this.id = id;
-        this.name = name;
-        this.price = price;
+        this.items = new ArrayList<>(); // Initialize the list here
+        this.value = value;
+        this.timestamp = timestamp;
     }
 
     // Getters and setters
@@ -22,19 +27,27 @@ public class Receipt {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public List<Item> getItems() {
+        return items;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 
-    public double getPrice() {
-        return price;
+    public double getValue() {
+        return value;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setValue(double value) {
+        this.value = value;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 }
