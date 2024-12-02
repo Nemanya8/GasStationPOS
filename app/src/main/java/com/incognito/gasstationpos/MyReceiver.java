@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.incognito.gasstationpos.models.AppState;
 import com.incognito.gasstationpos.models.GlobalData;
+import com.incognito.gasstationpos.models.Receipt;
 import com.incognito.gasstationpos.services.PosService;
 
 public class MyReceiver extends BroadcastReceiver {
@@ -22,6 +23,7 @@ public class MyReceiver extends BroadcastReceiver {
                 PosService posService = new PosService(context.getPackageName(), context.getApplicationContext());
                 posService.PrintReceipt();
                 GlobalData.getInstance().setAppState(AppState.NORMAL);
+                GlobalData.getInstance().setGlobalReceipt(new Receipt(System.currentTimeMillis()));
             }
             Intent i = new Intent(context, MainActivity.class);
             i.setAction(intent.getAction());
@@ -39,6 +41,7 @@ public class MyReceiver extends BroadcastReceiver {
                 PosService posService = new PosService(context.getPackageName(), context.getApplicationContext());
                 posService.PrintReceipt();
                 GlobalData.getInstance().setAppState(AppState.NORMAL);
+                GlobalData.getInstance().setGlobalReceipt(new Receipt(System.currentTimeMillis()));
             }
             Log.d("RECEIVER", "Start main activity");
             Intent i = new Intent(context, MainActivity.class);

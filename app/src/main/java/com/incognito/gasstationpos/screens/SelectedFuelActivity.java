@@ -68,6 +68,7 @@ public class SelectedFuelActivity extends AppCompatActivity {
 
             Intent nextIntent = new Intent(SelectedFuelActivity.this, ItemsActivity.class);
             startActivity(nextIntent);
+            finish();
         });
 
         btnPlus.setOnClickListener(v -> {

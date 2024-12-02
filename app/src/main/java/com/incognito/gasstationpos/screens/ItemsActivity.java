@@ -40,6 +40,7 @@ public class ItemsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent checkoutIntent = new Intent(ItemsActivity.this, CheckoutActivity.class);
                 startActivity(checkoutIntent);
+                finish();
             }
         });
 

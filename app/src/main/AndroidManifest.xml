@@ -39,10 +39,6 @@
             </intent-filter>
         </receiver>
 
-        <queries>
-            <package android:name="com.payten.service" />
-        </queries>
-
         <activity
             android:name="com.incognito.gasstationpos.screens.SelectedFuelActivity"
             android:exported="true">
@@ -79,5 +75,9 @@
         </activity>
 
     </application>
+
+    <queries>
+        <package android:name="com.payten.service" />
+    </queries>
 
 </manifest>
