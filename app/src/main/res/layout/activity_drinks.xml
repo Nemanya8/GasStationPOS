@@ -1,34 +1,37 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
     <!-- Title -->
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Drinks Menu"
+        android:text="Vaša korpa"
         android:textSize="24sp"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
-        android:textColor="#000"
-        android:layout_gravity="center"
-        android:padding="8dp" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="16dp"
+        android:layout_marginTop="55dp"/>
 
-    <!-- CocaCola -->
+    <!-- CocaCola Item -->
     <LinearLayout
+        android:id="@+id/itemCocaCola"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:layout_below="@id/tvTitle"
+        android:layout_marginTop="16dp">
 
         <ImageView
             android:id="@+id/itemImageCocaCola"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginEnd="16dp"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
             android:src="@drawable/cocacola" />
 
         <LinearLayout
@@ -50,26 +53,30 @@
                 android:id="@+id/itemValueCocaCola"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="130"
+                android:text="130 rsd"
                 android:textSize="14sp"
                 android:textColor="#888" />
 
         </LinearLayout>
 
+        <!-- Image Buttons for + and - -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
-            <Button
+            <!-- Minus Button -->
+            <ImageButton
                 android:id="@+id/btnMinusCocaCola"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:text="-"
-                android:textSize="20sp"
-                android:layout_marginEnd="8dp" />
+                android:src="@drawable/minus"
+                android:layout_marginEnd="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:scaleType="centerInside" />
 
+            <!-- Quantity Counter -->
             <TextView
                 android:id="@+id/quantityCounterCocaCola"
                 android:layout_width="wrap_content"
@@ -79,31 +86,33 @@
                 android:gravity="center"
                 android:layout_marginEnd="8dp" />
 
-            <Button
+            <!-- Plus Button -->
+            <ImageButton
                 android:id="@+id/btnPlusCocaCola"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:text="+"
-                android:textSize="20sp" />
+                android:src="@drawable/plus"
+                android:background="?android:attr/selectableItemBackground"
+                android:scaleType="centerInside" />
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Pepsi, RedBull, and Sprite follow the same structure -->
-    <!-- You can replicate the same structure for Pepsi, RedBull, and Sprite -->
-
-    <!-- RedBull -->
+    <!-- RedBull Item -->
     <LinearLayout
+        android:id="@+id/itemRedBull"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:layout_below="@id/itemCocaCola"
+        android:layout_marginTop="16dp">
 
         <ImageView
             android:id="@+id/itemImageRedBull"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginEnd="16dp"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
             android:src="@drawable/redbull" />
 
         <LinearLayout
@@ -125,26 +134,30 @@
                 android:id="@+id/itemValueRedBull"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="150"
+                android:text="350 rsd"
                 android:textSize="14sp"
                 android:textColor="#888" />
 
         </LinearLayout>
 
+        <!-- Image Buttons for + and - -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
-            <Button
+            <!-- Minus Button -->
+            <ImageButton
                 android:id="@+id/btnMinusRedBull"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:text="-"
-                android:textSize="20sp"
-                android:layout_marginEnd="8dp" />
+                android:src="@drawable/minus"
+                android:layout_marginEnd="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:scaleType="centerInside" />
 
+            <!-- Quantity Counter -->
             <TextView
                 android:id="@+id/quantityCounterRedBull"
                 android:layout_width="wrap_content"
@@ -154,32 +167,34 @@
                 android:gravity="center"
                 android:layout_marginEnd="8dp" />
 
-            <Button
+            <!-- Plus Button -->
+            <ImageButton
                 android:id="@+id/btnPlusRedBull"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:text="+"
-                android:textSize="20sp" />
+                android:src="@drawable/plus"
+                android:background="?android:attr/selectableItemBackground"
+                android:scaleType="centerInside" />
         </LinearLayout>
     </LinearLayout>
 
+    <!-- Pepsi Item -->
     <LinearLayout
+        android:id="@+id/itemPepsi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:elevation="4dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp">
+        android:layout_below="@id/itemRedBull"
+        android:layout_marginTop="16dp">
 
         <ImageView
             android:id="@+id/itemImagePepsi"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginEnd="16dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/pepsi" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/pepsi" /> <!-- Replace with Pepsi image -->
 
         <LinearLayout
             android:layout_width="0dp"
@@ -194,36 +209,36 @@
                 android:layout_height="wrap_content"
                 android:text="Pepsi"
                 android:textSize="16sp"
-                android:textColor="#000"
-                android:maxLines="1"
-                android:ellipsize="end" />
+                android:textColor="#000" />
 
             <TextView
                 android:id="@+id/itemValuePepsi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="120"
+                android:text="140 rsd"
                 android:textSize="14sp"
                 android:textColor="#888" />
+
         </LinearLayout>
 
-        <!-- Counter with plus and minus buttons -->
+        <!-- Image Buttons for + and - -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginStart="16dp">
+            android:gravity="center_vertical">
 
-            <Button
+            <!-- Minus Button -->
+            <ImageButton
                 android:id="@+id/btnMinusPepsi"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:text="-"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:layout_marginEnd="8dp" />
+                android:src="@drawable/minus"
+                android:layout_marginEnd="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:scaleType="centerInside" />
 
+            <!-- Quantity Counter -->
             <TextView
                 android:id="@+id/quantityCounterPepsi"
                 android:layout_width="wrap_content"
@@ -233,31 +248,34 @@
                 android:gravity="center"
                 android:layout_marginEnd="8dp" />
 
-            <Button
+            <!-- Plus Button -->
+            <ImageButton
                 android:id="@+id/btnPlusPepsi"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:text="+"
-                android:textSize="20sp"
-                android:gravity="center" />
+                android:src="@drawable/plus"
+                android:background="?android:attr/selectableItemBackground"
+                android:scaleType="centerInside" />
         </LinearLayout>
-
     </LinearLayout>
 
-    <!-- Sprite -->
+    <!-- Sprite Item -->
     <LinearLayout
+        android:id="@+id/itemSprite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:layout_below="@id/itemPepsi"
+        android:layout_marginTop="16dp">
 
         <ImageView
             android:id="@+id/itemImageSprite"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginEnd="16dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/sprite" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/sprite" /> <!-- Replace with Sprite image -->
 
         <LinearLayout
             android:layout_width="0dp"
@@ -278,26 +296,30 @@
                 android:id="@+id/itemValueSprite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="120"
+                android:text="120 rsd"
                 android:textSize="14sp"
                 android:textColor="#888" />
 
         </LinearLayout>
 
+        <!-- Image Buttons for + and - -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
-            <Button
+            <!-- Minus Button -->
+            <ImageButton
                 android:id="@+id/btnMinusSprite"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:text="-"
-                android:textSize="20sp"
-                android:layout_marginEnd="8dp" />
+                android:src="@drawable/minus"
+                android:layout_marginEnd="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:scaleType="centerInside" />
 
+            <!-- Quantity Counter -->
             <TextView
                 android:id="@+id/quantityCounterSprite"
                 android:layout_width="wrap_content"
@@ -307,23 +329,44 @@
                 android:gravity="center"
                 android:layout_marginEnd="8dp" />
 
-            <Button
+            <!-- Plus Button -->
+            <ImageButton
                 android:id="@+id/btnPlusSprite"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:text="+"
-                android:textSize="20sp" />
+                android:src="@drawable/plus"
+                android:background="?android:attr/selectableItemBackground"
+                android:scaleType="centerInside" />
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Back Button -->
-    <Button
-        android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Back"
-        android:textSize="16sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp" />
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
 
-</LinearLayout>
+        <!-- Bottom buttons section -->
+        <LinearLayout
+            android:id="@+id/bottomButtons"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="#F5F5F5"
+            android:elevation="4dp">
+
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Potvrdi"
+                android:background="@android:color/holo_red_light"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

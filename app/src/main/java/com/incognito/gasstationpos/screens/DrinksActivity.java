@@ -3,6 +3,7 @@ package com.incognito.gasstationpos.screens;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,16 +14,16 @@ import com.incognito.gasstationpos.models.Item;
 public class DrinksActivity extends AppCompatActivity {
 
     // Declare the views
-    private Button btnMinusCocaCola, btnPlusCocaCola;
+    private ImageButton btnMinusCocaCola, btnPlusCocaCola;
     private TextView quantityCounterCocaCola;
 
-    private Button btnMinusRedBull, btnPlusRedBull;
+    private ImageButton btnMinusRedBull, btnPlusRedBull;
     private TextView quantityCounterRedBull;
 
-    private Button btnMinusPepsi, btnPlusPepsi;
+    private ImageButton btnMinusPepsi, btnPlusPepsi;
     private TextView quantityCounterPepsi;
 
-    private Button btnMinusSprite, btnPlusSprite;
+    private ImageButton btnMinusSprite, btnPlusSprite;
     private TextView quantityCounterSprite;
 
     private Button btnBack;
@@ -32,24 +33,28 @@ public class DrinksActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drinks); // Make sure this is the correct layout file name
 
-        // Initialize the views
+        // Initialize the views for CocaCola
         btnMinusCocaCola = findViewById(R.id.btnMinusCocaCola);
         btnPlusCocaCola = findViewById(R.id.btnPlusCocaCola);
         quantityCounterCocaCola = findViewById(R.id.quantityCounterCocaCola);
 
+// Initialize the views for RedBull
         btnMinusRedBull = findViewById(R.id.btnMinusRedBull);
         btnPlusRedBull = findViewById(R.id.btnPlusRedBull);
         quantityCounterRedBull = findViewById(R.id.quantityCounterRedBull);
 
+// Initialize the views for Pepsi
         btnMinusPepsi = findViewById(R.id.btnMinusPepsi);
         btnPlusPepsi = findViewById(R.id.btnPlusPepsi);
         quantityCounterPepsi = findViewById(R.id.quantityCounterPepsi);
 
+        // Initialize the views for Sprite
         btnMinusSprite = findViewById(R.id.btnMinusSprite);
         btnPlusSprite = findViewById(R.id.btnPlusSprite);
         quantityCounterSprite = findViewById(R.id.quantityCounterSprite);
 
-        btnBack = findViewById(R.id.btnBack);
+
+        btnBack = findViewById(R.id.btnNext);
 
         // Set button click listeners to adjust the quantity
         btnMinusCocaCola.setOnClickListener(new View.OnClickListener() {
@@ -108,17 +113,15 @@ public class DrinksActivity extends AppCompatActivity {
             }
         });
 
-        // Set up the back button to go back to the previous screen
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 updateCart();
-                finish(); // Close the activity and go back to the previous screen
+                finish();
             }
         });
     }
 
-    // Helper function to update quantity
     private void updateQuantity(TextView counterTextView, int delta) {
         int currentQuantity = Integer.parseInt(counterTextView.getText().toString());
         int newQuantity = currentQuantity + delta;
@@ -129,7 +132,7 @@ public class DrinksActivity extends AppCompatActivity {
 
     public void updateCart() {
         String[] drinkNames = {"CocaCola", "RedBull", "Pepsi", "Sprite"};
-        double[] prices = {130, 150, 120, 120}; // Example prices per liter for each drink
+        double[] prices = {130, 350, 140, 120};
         TextView[] quantityCounters = {quantityCounterCocaCola, quantityCounterRedBull, quantityCounterPepsi, quantityCounterSprite};
 
         for (int i = 0; i < drinkNames.length; i++) {
@@ -137,11 +140,10 @@ public class DrinksActivity extends AppCompatActivity {
 
             if (quantity > 0) {
                 String name = drinkNames[i];
-                String lowercaseName = name.toLowerCase().replace(" ", "_"); // Convert name to lowercase and replace spaces with '_'
+                String lowercaseName = name.toLowerCase().replace(" ", "_");
                 double price = prices[i];
-                int qty = quantity;
 
-                Item item = new Item(name, lowercaseName, price, qty, "pice"); // Category is always "pice"
+                Item item = new Item(name, lowercaseName, price, quantity, "pice");
                 GlobalData.getInstance().getGlobalReceipt().addItem(item);
 
                 GlobalData.getInstance().getGlobalReceipt().addValue(item.getValue() * item.getQuantity());
