@@ -3,29 +3,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:gravity="center_vertical">
 
-    <Button
-        android:id="@+id/btnAddItem"
-        android:layout_width="wrap_content"
+    <!-- First ImageButton for bmb95 -->
+    <ImageButton
+        android:id="@+id/btnImageButtonBmb95"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Item" />
+        android:src="@drawable/bmb95"
+        android:layout_marginTop="10dp"
+        android:contentDescription="BMB95 Image"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:background="@null" />
 
-    <Button
-        android:id="@+id/btnShowAllItems"
-        android:layout_width="wrap_content"
+    <!-- Second ImageButton for bmb100 -->
+    <ImageButton
+        android:id="@+id/btnImageButtonBmb100"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Show All Items" />
+        android:src="@drawable/bmb100"
+        android:layout_marginTop="10dp"
+        android:contentDescription="BMB100 Image"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:background="@null" />
 
-    <Button
-        android:id="@+id/btnAddReceipt"
-        android:layout_width="wrap_content"
+    <!-- Third ImageButton for dizel -->
+    <ImageButton
+        android:id="@+id/btnImageButtonDizel"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Receipt" />
+        android:src="@drawable/dizel"
+        android:layout_marginTop="10dp"
+        android:contentDescription="Dizel Image"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:background="@null" />
 
-    <Button
-        android:id="@+id/btnPay"
-        android:layout_width="wrap_content"
+    <!-- Fourth ImageButton for dizel_premium -->
+    <ImageButton
+        android:id="@+id/btnImageButtonDizelPremium"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pay" />
+        android:src="@drawable/dizel_premium"
+        android:layout_marginTop="10dp"
+        android:contentDescription="Dizel Premium Image"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:background="@null" />
+
 </LinearLayout>
