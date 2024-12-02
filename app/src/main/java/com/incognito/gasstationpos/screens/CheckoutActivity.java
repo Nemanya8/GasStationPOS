@@ -1,19 +1,28 @@
 package com.incognito.gasstationpos.screens;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
 import androidx.appcompat.app.AppCompatActivity;
 import com.incognito.gasstationpos.R;
+import com.incognito.gasstationpos.models.AppState;
 import com.incognito.gasstationpos.models.GlobalData;
 import com.incognito.gasstationpos.models.Item;
 import com.incognito.gasstationpos.models.Receipt;
+import com.incognito.gasstationpos.services.PosService;
+
+import java.math.BigDecimal;
 import java.util.List;
 
 public class CheckoutActivity extends AppCompatActivity {
     private LinearLayout itemContainer;
     private TextView tvTotalCost;
+    private Button btnPay;
+    private PosService posService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +31,8 @@ public class CheckoutActivity extends AppCompatActivity {
 
         itemContainer = findViewById(R.id.itemContainer);
         tvTotalCost = findViewById(R.id.tvTotalCost);
+        btnPay = findViewById(R.id.btnPay);
+        posService = new PosService(getPackageName(), getApplicationContext());
 
         // Retrieve the Receipt object from the GlobalData singleton
         Receipt receipt = GlobalData.getInstance().getGlobalReceipt();
@@ -33,6 +44,15 @@ public class CheckoutActivity extends AppCompatActivity {
             // Set total cost from the receipt value (in RSD)
             tvTotalCost.setText("Ukupno: " + receipt.getValue() + " rsd");
         }
+
+        btnPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GlobalData.getInstance().setAppState(AppState.PAYMENT_STARTED);
+                posService.Pay(BigDecimal.valueOf(GlobalData.getInstance().getGlobalReceipt().getValue()));
+            }
+        });
+
     }
 
     private void populateItems(List<Item> items) {
@@ -83,5 +103,6 @@ public class CheckoutActivity extends AppCompatActivity {
             itemContainer.addView(itemLayout);
         }
     }
+
 
 }

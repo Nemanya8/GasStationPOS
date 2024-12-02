@@ -57,7 +57,7 @@
 
             <!-- Payment button -->
             <Button
-                android:id="@+id/btnNext"
+                android:id="@+id/btnPay"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

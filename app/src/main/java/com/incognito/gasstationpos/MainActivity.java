@@ -66,10 +66,4 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("FUEL_TYPE", fuelType);
         startActivity(intent);
     }
-
-   private void pay() {
-       GlobalData.getInstance().setAppState(AppState.PAYMENT_STARTED);
-       posService.Pay(new BigDecimal(4761));
-       //Printing is called inside receiver
-    }
 }
