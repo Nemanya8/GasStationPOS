@@ -7,7 +7,7 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pice"
+        android:text="Hrana"
         android:textSize="24sp"
         android:textColor="@android:color/black"
         android:textStyle="bold"
@@ -16,9 +16,9 @@
         android:padding="16dp"
         android:layout_marginTop="55dp"/>
 
-    <!-- CocaCola Item -->
+    <!-- Chipsy Item -->
     <LinearLayout
-        android:id="@+id/itemCocaCola"
+        android:id="@+id/itemChipsy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -27,12 +27,12 @@
         android:layout_marginTop="16dp">
 
         <ImageView
-            android:id="@+id/itemImageCocaCola"
+            android:id="@+id/itemImageChipsy"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginEnd="16dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/cocacola" />
+            android:src="@drawable/chipsy" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -42,15 +42,96 @@
             android:gravity="center_vertical">
 
             <TextView
-                android:id="@+id/itemNameCocaCola"
+                android:id="@+id/itemNameChipsy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CocaCola"
+                android:text="Chipsy"
                 android:textSize="16sp"
                 android:textColor="#000" />
 
             <TextView
-                android:id="@+id/itemValueCocaCola"
+                android:id="@+id/itemValueChipsy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="150 rsd"
+                android:textSize="14sp"
+                android:textColor="#888" />
+
+        </LinearLayout>
+
+        <!-- Image Buttons for + and - -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Minus Button -->
+            <ImageButton
+                android:id="@+id/btnMinusChipsy"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/minus"
+                android:layout_marginEnd="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:scaleType="centerInside" />
+
+            <!-- Quantity Counter -->
+            <TextView
+                android:id="@+id/quantityCounterChipsy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Plus Button -->
+            <ImageButton
+                android:id="@+id/btnPlusChipsy"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/plus"
+                android:background="?android:attr/selectableItemBackground"
+                android:scaleType="centerInside" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Smoki Item -->
+    <LinearLayout
+        android:id="@+id/itemSmoki"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:layout_below="@id/itemChipsy"
+        android:layout_marginTop="16dp">
+
+        <ImageView
+            android:id="@+id/itemImageSmoki"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="16dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/smoki" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/itemNameSmoki"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Smoki"
+                android:textSize="16sp"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/itemValueSmoki"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="130 rsd"
@@ -68,7 +149,7 @@
 
             <!-- Minus Button -->
             <ImageButton
-                android:id="@+id/btnMinusCocaCola"
+                android:id="@+id/btnMinusSmoki"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/minus"
@@ -78,7 +159,7 @@
 
             <!-- Quantity Counter -->
             <TextView
-                android:id="@+id/quantityCounterCocaCola"
+                android:id="@+id/quantityCounterSmoki"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
@@ -88,7 +169,7 @@
 
             <!-- Plus Button -->
             <ImageButton
-                android:id="@+id/btnPlusCocaCola"
+                android:id="@+id/btnPlusSmoki"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/plus"
@@ -97,23 +178,23 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- RedBull Item -->
+    <!-- Twix Item -->
     <LinearLayout
-        android:id="@+id/itemRedBull"
+        android:id="@+id/itemTwix"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:layout_below="@id/itemCocaCola"
+        android:layout_below="@id/itemSmoki"
         android:layout_marginTop="16dp">
 
         <ImageView
-            android:id="@+id/itemImageRedBull"
+            android:id="@+id/itemImageTwix"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginEnd="16dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/redbull" />
+            android:src="@drawable/twix" /> <!-- Replace with Twix image -->
 
         <LinearLayout
             android:layout_width="0dp"
@@ -123,18 +204,18 @@
             android:gravity="center_vertical">
 
             <TextView
-                android:id="@+id/itemNameRedBull"
+                android:id="@+id/itemNameTwix"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="RedBull"
+                android:text="Twix"
                 android:textSize="16sp"
                 android:textColor="#000" />
 
             <TextView
-                android:id="@+id/itemValueRedBull"
+                android:id="@+id/itemValueTwix"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="350 rsd"
+                android:text="100 rsd"
                 android:textSize="14sp"
                 android:textColor="#888" />
 
@@ -149,7 +230,7 @@
 
             <!-- Minus Button -->
             <ImageButton
-                android:id="@+id/btnMinusRedBull"
+                android:id="@+id/btnMinusTwix"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/minus"
@@ -159,7 +240,7 @@
 
             <!-- Quantity Counter -->
             <TextView
-                android:id="@+id/quantityCounterRedBull"
+                android:id="@+id/quantityCounterTwix"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
@@ -169,7 +250,7 @@
 
             <!-- Plus Button -->
             <ImageButton
-                android:id="@+id/btnPlusRedBull"
+                android:id="@+id/btnPlusTwix"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/plus"
@@ -178,23 +259,23 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Pepsi Item -->
+    <!-- Kikiriki Item -->
     <LinearLayout
-        android:id="@+id/itemPepsi"
+        android:id="@+id/itemKikiriki"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:layout_below="@id/itemRedBull"
+        android:layout_below="@id/itemTwix"
         android:layout_marginTop="16dp">
 
         <ImageView
-            android:id="@+id/itemImagePepsi"
+            android:id="@+id/itemImageKikiriki"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginEnd="16dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/pepsi" /> <!-- Replace with Pepsi image -->
+            android:src="@drawable/kikiriki" /> <!-- Replace with Kikiriki image -->
 
         <LinearLayout
             android:layout_width="0dp"
@@ -204,96 +285,15 @@
             android:gravity="center_vertical">
 
             <TextView
-                android:id="@+id/itemNamePepsi"
+                android:id="@+id/itemNameKikiriki"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pepsi"
+                android:text="Kikiriki"
                 android:textSize="16sp"
                 android:textColor="#000" />
 
             <TextView
-                android:id="@+id/itemValuePepsi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="140 rsd"
-                android:textSize="14sp"
-                android:textColor="#888" />
-
-        </LinearLayout>
-
-        <!-- Image Buttons for + and - -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-
-            <!-- Minus Button -->
-            <ImageButton
-                android:id="@+id/btnMinusPepsi"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/minus"
-                android:layout_marginEnd="8dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:scaleType="centerInside" />
-
-            <!-- Quantity Counter -->
-            <TextView
-                android:id="@+id/quantityCounterPepsi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:layout_marginEnd="8dp" />
-
-            <!-- Plus Button -->
-            <ImageButton
-                android:id="@+id/btnPlusPepsi"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/plus"
-                android:background="?android:attr/selectableItemBackground"
-                android:scaleType="centerInside" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- Sprite Item -->
-    <LinearLayout
-        android:id="@+id/itemSprite"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="8dp"
-        android:layout_below="@id/itemPepsi"
-        android:layout_marginTop="16dp">
-
-        <ImageView
-            android:id="@+id/itemImageSprite"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginEnd="16dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/sprite" /> <!-- Replace with Sprite image -->
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:id="@+id/itemNameSprite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sprite"
-                android:textSize="16sp"
-                android:textColor="#000" />
-
-            <TextView
-                android:id="@+id/itemValueSprite"
+                android:id="@+id/itemValueKikiriki"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="120 rsd"
@@ -311,7 +311,7 @@
 
             <!-- Minus Button -->
             <ImageButton
-                android:id="@+id/btnMinusSprite"
+                android:id="@+id/btnMinusKikiriki"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/minus"
@@ -321,7 +321,7 @@
 
             <!-- Quantity Counter -->
             <TextView
-                android:id="@+id/quantityCounterSprite"
+                android:id="@+id/quantityCounterKikiriki"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
@@ -331,7 +331,7 @@
 
             <!-- Plus Button -->
             <ImageButton
-                android:id="@+id/btnPlusSprite"
+                android:id="@+id/btnPlusKikiriki"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/plus"
