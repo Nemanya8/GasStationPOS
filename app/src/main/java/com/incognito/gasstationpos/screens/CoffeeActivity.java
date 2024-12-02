@@ -132,7 +132,7 @@ public class CoffeeActivity extends AppCompatActivity {
 
     public void updateCart() {
         String[] drinkNames = {"Cappuccino", "Espresso", "Domaca", "Caj"};
-        double[] prices = {130, 350, 140, 120};
+        double[] prices = {130, 100, 140, 120};
         TextView[] quantityCounters = {quantityCounterCappuccino, quantityCounterEspresso, quantityCounterDomaca, quantityCounterCaj};
 
         for (int i = 0; i < drinkNames.length; i++) {

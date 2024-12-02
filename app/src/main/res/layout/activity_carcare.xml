@@ -1,0 +1,372 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sve za vase Vozilo"
+        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="16dp"
+        android:layout_marginTop="55dp"/>
+
+    <!-- CarOil Item -->
+    <LinearLayout
+        android:id="@+id/itemCarOil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:layout_below="@id/tvTitle"
+        android:layout_marginTop="16dp">
+
+        <ImageView
+            android:id="@+id/itemImageCarOil"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="16dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/caroil" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/itemNameCarOil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CarOil"
+                android:textSize="16sp"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/itemValueCarOil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="840 rsd"
+                android:textSize="14sp"
+                android:textColor="#888" />
+
+        </LinearLayout>
+
+        <!-- Image Buttons for + and - -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Minus Button -->
+            <ImageButton
+                android:id="@+id/btnMinusCarOil"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/minus"
+                android:layout_marginEnd="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:scaleType="centerInside" />
+
+            <!-- Quantity Counter -->
+            <TextView
+                android:id="@+id/quantityCounterCarOil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Plus Button -->
+            <ImageButton
+                android:id="@+id/btnPlusCarOil"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/plus"
+                android:background="?android:attr/selectableItemBackground"
+                android:scaleType="centerInside" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Brisaci Item -->
+    <LinearLayout
+        android:id="@+id/itemBrisaci"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:layout_below="@id/itemCarOil"
+        android:layout_marginTop="16dp">
+
+        <ImageView
+            android:id="@+id/itemImageBrisaci"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="16dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/brisaci" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/itemNameBrisaci"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Brisaci"
+                android:textSize="16sp"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/itemValueBrisaci"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100 rsd"
+                android:textSize="14sp"
+                android:textColor="#888" />
+
+        </LinearLayout>
+
+        <!-- Image Buttons for + and - -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Minus Button -->
+            <ImageButton
+                android:id="@+id/btnMinusBrisaci"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/minus"
+                android:layout_marginEnd="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:scaleType="centerInside" />
+
+            <!-- Quantity Counter -->
+            <TextView
+                android:id="@+id/quantityCounterBrisaci"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Plus Button -->
+            <ImageButton
+                android:id="@+id/btnPlusBrisaci"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/plus"
+                android:background="?android:attr/selectableItemBackground"
+                android:scaleType="centerInside" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- G12 Item -->
+    <LinearLayout
+        android:id="@+id/itemG12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:layout_below="@id/itemBrisaci"
+        android:layout_marginTop="16dp">
+
+        <ImageView
+            android:id="@+id/itemImageG12"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="16dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/g12" /> <!-- Replace with G12 image -->
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/itemNameG12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="G12"
+                android:textSize="16sp"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/itemValueG12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="930 rsd"
+                android:textSize="14sp"
+                android:textColor="#888" />
+
+        </LinearLayout>
+
+        <!-- Image Buttons for + and - -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Minus Button -->
+            <ImageButton
+                android:id="@+id/btnMinusG12"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/minus"
+                android:layout_marginEnd="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:scaleType="centerInside" />
+
+            <!-- Quantity Counter -->
+            <TextView
+                android:id="@+id/quantityCounterG12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Plus Button -->
+            <ImageButton
+                android:id="@+id/btnPlusG12"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/plus"
+                android:background="?android:attr/selectableItemBackground"
+                android:scaleType="centerInside" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- AdBlue Item -->
+    <LinearLayout
+        android:id="@+id/itemAdBlue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:layout_below="@id/itemG12"
+        android:layout_marginTop="16dp">
+
+        <ImageView
+            android:id="@+id/itemImageAdBlue"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="16dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/adblue" /> <!-- Replace with AdBlue image -->
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/itemNameAdBlue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AdBlue"
+                android:textSize="16sp"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/itemValueAdBlue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1400 rsd"
+                android:textSize="14sp"
+                android:textColor="#888" />
+
+        </LinearLayout>
+
+        <!-- Image Buttons for + and - -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Minus Button -->
+            <ImageButton
+                android:id="@+id/btnMinusAdBlue"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/minus"
+                android:layout_marginEnd="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:scaleType="centerInside" />
+
+            <!-- Quantity Counter -->
+            <TextView
+                android:id="@+id/quantityCounterAdBlue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Plus Button -->
+            <ImageButton
+                android:id="@+id/btnPlusAdBlue"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/plus"
+                android:background="?android:attr/selectableItemBackground"
+                android:scaleType="centerInside" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+
+        <!-- Bottom buttons section -->
+        <LinearLayout
+            android:id="@+id/bottomButtons"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="#F5F5F5"
+            android:elevation="4dp">
+
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Potvrdi"
+                android:background="@android:color/holo_red_light"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

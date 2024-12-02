@@ -132,7 +132,7 @@ public class CigarsActivity extends AppCompatActivity {
 
     public void updateCart() {
         String[] drinkNames = {"Winston", "Malboro", "LM", "Sobranie"};
-        double[] prices = {130, 350, 140, 120};
+        double[] prices = {300, 350, 280, 500};
         TextView[] quantityCounters = {quantityCounterWinston, quantityCounterMalboro, quantityCounterLM, quantityCounterSobranie};
 
         for (int i = 0; i < drinkNames.length; i++) {

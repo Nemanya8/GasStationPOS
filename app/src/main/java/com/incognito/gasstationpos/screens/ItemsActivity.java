@@ -13,7 +13,7 @@ import com.incognito.gasstationpos.R;
 public class ItemsActivity extends AppCompatActivity {
 
     private Button btnBack, btnNext;
-    private ImageButton imgDrinks, imgFood, imgCoffee, imgCigars;
+    private ImageButton imgDrinks, imgFood, imgCoffee, imgCigars, imgCarCare;
 
 
     @Override
@@ -27,6 +27,7 @@ public class ItemsActivity extends AppCompatActivity {
         imgFood = findViewById(R.id.imgSnacks);
         imgCoffee = findViewById(R.id.imgCoffee);
         imgCigars = findViewById(R.id.imgCigarettes);
+        imgCarCare = findViewById(R.id.imgCarCare);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +74,14 @@ public class ItemsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent cigarsIntent = new Intent(ItemsActivity.this, CigarsActivity.class);
                 startActivity(cigarsIntent);
+            }
+        });
+
+        imgCarCare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent carcareIntent = new Intent(ItemsActivity.this, CarCareActivity.class);
+                startActivity(carcareIntent);
             }
         });
     }
