@@ -16,12 +16,32 @@
         <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
+            android:launchMode="singleInstance"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <intent-filter>
+                <action android:name="EcrApp.app"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
         </activity>
+
+        <receiver
+            android:name=".MyReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="senderIntentFilter" />
+                <action android:name="com.payten.devicemanager.DefaultEcrApp" />
+            </intent-filter>
+        </receiver>
+
+        <queries>
+            <package android:name="com.payten.service" />
+        </queries>
 
         <activity
             android:name="com.incognito.gasstationpos.screens.SelectedFuelActivity"
