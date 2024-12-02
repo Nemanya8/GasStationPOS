@@ -10,6 +10,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.incognito.gasstationpos.R;
+import com.incognito.gasstationpos.models.GlobalData;
+import com.incognito.gasstationpos.models.Item;
 
 public class SelectedFuelActivity extends AppCompatActivity {
 
@@ -17,6 +19,7 @@ public class SelectedFuelActivity extends AppCompatActivity {
     private TextView txtPrice;
     private String fuelType;
     private double pricePerLiter;
+    private int liters;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,31 +40,38 @@ public class SelectedFuelActivity extends AppCompatActivity {
         switch (fuelType) {
             case "BMB95":
                 imgSelectedFuel.setImageResource(R.drawable.bmb95);
-                pricePerLiter = 145;
+                pricePerLiter = 180;
                 break;
             case "BMB100":
                 imgSelectedFuel.setImageResource(R.drawable.bmb100);
-                pricePerLiter = 155;
+                pricePerLiter = 187;
                 break;
             case "Dizel":
                 imgSelectedFuel.setImageResource(R.drawable.dizel);
-                pricePerLiter = 160;
+                pricePerLiter = 192;
                 break;
-            case "DizelPremium":
+            case "Dizel Premium":
                 imgSelectedFuel.setImageResource(R.drawable.dizel_premium);
-                pricePerLiter = 170;
+                pricePerLiter = 201;
                 break;
         }
 
         edtLiters.setText("0 L");
         btnBack.setOnClickListener(v -> onBackPressed());
+
         btnNext.setOnClickListener(v -> {
+
+            Item item = new Item(fuelType, fuelType, pricePerLiter, liters, "gorivo");
+
+            GlobalData.getInstance().getGlobalReceipt().addItem(item);
+            GlobalData.getInstance().getGlobalReceipt().addValue(item.getValue() * item.getQuantity());
+
             Intent nextIntent = new Intent(SelectedFuelActivity.this, ItemsActivity.class);
             startActivity(nextIntent);
         });
 
         btnPlus.setOnClickListener(v -> {
-            int liters = Integer.parseInt(edtLiters.getText().toString().replace(" L", ""));
+            liters = Integer.parseInt(edtLiters.getText().toString().replace(" L", ""));
             liters++;
             edtLiters.setText(liters + " L");
             updatePrice();
