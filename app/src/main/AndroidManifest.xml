@@ -63,6 +63,21 @@
             android:exported="true">
         </activity>
 
+        <activity
+            android:name="com.incognito.gasstationpos.screens.FoodActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name="com.incognito.gasstationpos.screens.CoffeeActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name="com.incognito.gasstationpos.screens.CigarsActivity"
+            android:exported="true">
+        </activity>
+
     </application>
 
 </manifest>

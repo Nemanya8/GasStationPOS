@@ -7,7 +7,7 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pice"
+        android:text="Kafa"
         android:textSize="24sp"
         android:textColor="@android:color/black"
         android:textStyle="bold"
@@ -16,9 +16,9 @@
         android:padding="16dp"
         android:layout_marginTop="55dp"/>
 
-    <!-- CocaCola Item -->
+    <!-- Cappuccino Item -->
     <LinearLayout
-        android:id="@+id/itemCocaCola"
+        android:id="@+id/itemCappuccino"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -27,12 +27,12 @@
         android:layout_marginTop="16dp">
 
         <ImageView
-            android:id="@+id/itemImageCocaCola"
+            android:id="@+id/itemImageCappuccino"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginEnd="16dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/cocacola" />
+            android:src="@drawable/cappuccino" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -42,15 +42,15 @@
             android:gravity="center_vertical">
 
             <TextView
-                android:id="@+id/itemNameCocaCola"
+                android:id="@+id/itemNameCappuccino"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CocaCola"
+                android:text="Cappuccino"
                 android:textSize="16sp"
                 android:textColor="#000" />
 
             <TextView
-                android:id="@+id/itemValueCocaCola"
+                android:id="@+id/itemValueCappuccino"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="130 rsd"
@@ -68,7 +68,7 @@
 
             <!-- Minus Button -->
             <ImageButton
-                android:id="@+id/btnMinusCocaCola"
+                android:id="@+id/btnMinusCappuccino"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/minus"
@@ -78,7 +78,7 @@
 
             <!-- Quantity Counter -->
             <TextView
-                android:id="@+id/quantityCounterCocaCola"
+                android:id="@+id/quantityCounterCappuccino"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
@@ -88,7 +88,7 @@
 
             <!-- Plus Button -->
             <ImageButton
-                android:id="@+id/btnPlusCocaCola"
+                android:id="@+id/btnPlusCappuccino"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/plus"
@@ -97,23 +97,23 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- RedBull Item -->
+    <!-- Espresso Item -->
     <LinearLayout
-        android:id="@+id/itemRedBull"
+        android:id="@+id/itemEspresso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:layout_below="@id/itemCocaCola"
+        android:layout_below="@id/itemCappuccino"
         android:layout_marginTop="16dp">
 
         <ImageView
-            android:id="@+id/itemImageRedBull"
+            android:id="@+id/itemImageEspresso"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginEnd="16dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/redbull" />
+            android:src="@drawable/espresso" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -123,18 +123,18 @@
             android:gravity="center_vertical">
 
             <TextView
-                android:id="@+id/itemNameRedBull"
+                android:id="@+id/itemNameEspresso"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="RedBull"
+                android:text="Espresso"
                 android:textSize="16sp"
                 android:textColor="#000" />
 
             <TextView
-                android:id="@+id/itemValueRedBull"
+                android:id="@+id/itemValueEspresso"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="350 rsd"
+                android:text="100 rsd"
                 android:textSize="14sp"
                 android:textColor="#888" />
 
@@ -149,7 +149,7 @@
 
             <!-- Minus Button -->
             <ImageButton
-                android:id="@+id/btnMinusRedBull"
+                android:id="@+id/btnMinusEspresso"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/minus"
@@ -159,7 +159,7 @@
 
             <!-- Quantity Counter -->
             <TextView
-                android:id="@+id/quantityCounterRedBull"
+                android:id="@+id/quantityCounterEspresso"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
@@ -169,7 +169,7 @@
 
             <!-- Plus Button -->
             <ImageButton
-                android:id="@+id/btnPlusRedBull"
+                android:id="@+id/btnPlusEspresso"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/plus"
@@ -178,23 +178,23 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Pepsi Item -->
+    <!-- Domaca Item -->
     <LinearLayout
-        android:id="@+id/itemPepsi"
+        android:id="@+id/itemDomaca"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:layout_below="@id/itemRedBull"
+        android:layout_below="@id/itemEspresso"
         android:layout_marginTop="16dp">
 
         <ImageView
-            android:id="@+id/itemImagePepsi"
+            android:id="@+id/itemImageDomaca"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginEnd="16dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/pepsi" /> <!-- Replace with Pepsi image -->
+            android:src="@drawable/domaca" /> <!-- Replace with Domaca image -->
 
         <LinearLayout
             android:layout_width="0dp"
@@ -204,15 +204,15 @@
             android:gravity="center_vertical">
 
             <TextView
-                android:id="@+id/itemNamePepsi"
+                android:id="@+id/itemNameDomaca"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pepsi"
+                android:text="Domaca"
                 android:textSize="16sp"
                 android:textColor="#000" />
 
             <TextView
-                android:id="@+id/itemValuePepsi"
+                android:id="@+id/itemValueDomaca"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="140 rsd"
@@ -230,7 +230,7 @@
 
             <!-- Minus Button -->
             <ImageButton
-                android:id="@+id/btnMinusPepsi"
+                android:id="@+id/btnMinusDomaca"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/minus"
@@ -240,7 +240,7 @@
 
             <!-- Quantity Counter -->
             <TextView
-                android:id="@+id/quantityCounterPepsi"
+                android:id="@+id/quantityCounterDomaca"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
@@ -250,7 +250,7 @@
 
             <!-- Plus Button -->
             <ImageButton
-                android:id="@+id/btnPlusPepsi"
+                android:id="@+id/btnPlusDomaca"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/plus"
@@ -259,23 +259,23 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Sprite Item -->
+    <!-- Caj Item -->
     <LinearLayout
-        android:id="@+id/itemSprite"
+        android:id="@+id/itemCaj"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:layout_below="@id/itemPepsi"
+        android:layout_below="@id/itemDomaca"
         android:layout_marginTop="16dp">
 
         <ImageView
-            android:id="@+id/itemImageSprite"
+            android:id="@+id/itemImageCaj"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginEnd="16dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/sprite" /> <!-- Replace with Sprite image -->
+            android:src="@drawable/caj" /> <!-- Replace with Caj image -->
 
         <LinearLayout
             android:layout_width="0dp"
@@ -285,15 +285,15 @@
             android:gravity="center_vertical">
 
             <TextView
-                android:id="@+id/itemNameSprite"
+                android:id="@+id/itemNameCaj"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sprite"
+                android:text="Caj"
                 android:textSize="16sp"
                 android:textColor="#000" />
 
             <TextView
-                android:id="@+id/itemValueSprite"
+                android:id="@+id/itemValueCaj"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="120 rsd"
@@ -311,7 +311,7 @@
 
             <!-- Minus Button -->
             <ImageButton
-                android:id="@+id/btnMinusSprite"
+                android:id="@+id/btnMinusCaj"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/minus"
@@ -321,7 +321,7 @@
 
             <!-- Quantity Counter -->
             <TextView
-                android:id="@+id/quantityCounterSprite"
+                android:id="@+id/quantityCounterCaj"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
@@ -331,7 +331,7 @@
 
             <!-- Plus Button -->
             <ImageButton
-                android:id="@+id/btnPlusSprite"
+                android:id="@+id/btnPlusCaj"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/plus"

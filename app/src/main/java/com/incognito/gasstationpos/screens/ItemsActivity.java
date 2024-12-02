@@ -13,7 +13,8 @@ import com.incognito.gasstationpos.R;
 public class ItemsActivity extends AppCompatActivity {
 
     private Button btnBack, btnNext;
-    private ImageButton imgDrinks;
+    private ImageButton imgDrinks, imgFood, imgCoffee, imgCigars;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,9 @@ public class ItemsActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
         btnNext = findViewById(R.id.btnNext);
         imgDrinks = findViewById(R.id.imgDrinks);
+        imgFood = findViewById(R.id.imgSnacks);
+        imgCoffee = findViewById(R.id.imgCoffee);
+        imgCigars = findViewById(R.id.imgCigarettes);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +48,30 @@ public class ItemsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent drinksIntent = new Intent(ItemsActivity.this, DrinksActivity.class);
                 startActivity(drinksIntent);
+            }
+        });
+
+        imgFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent foodIntent = new Intent(ItemsActivity.this, FoodActivity.class);
+                startActivity(foodIntent);
+            }
+        });
+
+        imgCoffee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent coffeeIntent = new Intent(ItemsActivity.this, CoffeeActivity.class);
+                startActivity(coffeeIntent);
+            }
+        });
+
+        imgCigars.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cigarsIntent = new Intent(ItemsActivity.this, CigarsActivity.class);
+                startActivity(cigarsIntent);
             }
         });
     }
