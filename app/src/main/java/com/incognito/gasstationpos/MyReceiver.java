@@ -23,7 +23,7 @@ public class MyReceiver extends BroadcastReceiver {
                 PosService posService = new PosService(context.getPackageName(), context.getApplicationContext());
                 posService.PrintReceipt();
                 GlobalData.getInstance().setAppState(AppState.NORMAL);
-                //Restart receipt
+
                 GlobalData.getInstance().setGlobalReceipt(new Receipt(System.currentTimeMillis()));
             }
             Intent i = new Intent(context, MainActivity.class);
@@ -42,7 +42,6 @@ public class MyReceiver extends BroadcastReceiver {
                 PosService posService = new PosService(context.getPackageName(), context.getApplicationContext());
                 posService.PrintReceipt();
                 GlobalData.getInstance().setAppState(AppState.NORMAL);
-                //Restart receipt
                 GlobalData.getInstance().setGlobalReceipt(new Receipt(System.currentTimeMillis()));
             }
             Log.d("RECEIVER", "Start main activity");

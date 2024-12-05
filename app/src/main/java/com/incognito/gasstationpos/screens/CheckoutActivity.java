@@ -36,22 +36,19 @@ public class CheckoutActivity extends AppCompatActivity {
         btnPay = findViewById(R.id.btnPay);
         posService = new PosService(getPackageName(), getApplicationContext());
 
-        // Retrieve the Receipt object from the GlobalData singleton
         Receipt receipt = GlobalData.getInstance().getGlobalReceipt();
 
         if (receipt != null) {
-            // Dynamically populate the item list using the receipt's items
             populateItems(receipt.getItems());
 
-            // Set total cost from the receipt value (in RSD)
             tvTotalCost.setText("Ukupno: " + receipt.getValue() + " rsd");
         }
 
         btnPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GlobalData.getInstance().setAppState(AppState.PAYMENT_STARTED);
                 posService.Pay(BigDecimal.valueOf(GlobalData.getInstance().getGlobalReceipt().getValue()));
+                GlobalData.getInstance().setAppState(AppState.PAYMENT_STARTED);
                 finish();
             }
         });

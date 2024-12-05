@@ -1,21 +1,11 @@
 package com.incognito.gasstationpos;
 
-import android.content.Context;
-import android.content.IntentFilter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-
 import androidx.appcompat.app.AppCompatActivity;
 import com.incognito.gasstationpos.screens.SelectedFuelActivity;
-
-import com.incognito.gasstationpos.models.AppState;
-import com.incognito.gasstationpos.models.GlobalData;
-import com.incognito.gasstationpos.models.Item;
-import com.incognito.gasstationpos.models.Receipt;
-import com.incognito.gasstationpos.services.FirestoreService;
-import com.incognito.gasstationpos.services.PosService;
 
 
 public class MainActivity extends AppCompatActivity {

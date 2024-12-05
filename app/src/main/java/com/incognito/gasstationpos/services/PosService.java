@@ -13,7 +13,6 @@ import com.incognito.gasstationpos.ecr.EcrRequestTransactionType;
 import com.google.gson.Gson;
 import com.incognito.gasstationpos.models.GlobalData;
 import com.incognito.gasstationpos.models.Item;
-import com.incognito.gasstationpos.models.Receipt;
 import com.incognito.gasstationpos.transaction.TransactionData;
 import com.incognito.gasstationpos.utils.HashUtils;
 
@@ -166,11 +165,9 @@ public class PosService {
         addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, " ");
 
         addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "================================");
-        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "ITEM");
-        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "  QUANTITY                AMOUNT");
+        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "IME");
+        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "  KOLICINA                VREDNOST");
         addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "================================");
-        GlobalData instance = GlobalData.getInstance();
-        Receipt receipt = GlobalData.getInstance().getGlobalReceipt();
         for (Item item: GlobalData.getInstance().getGlobalReceipt().getItems()) {
             BigDecimal itemValue = new BigDecimal(item.getValue());
             BigDecimal itemQuantity = new BigDecimal(item.getQuantity());
@@ -181,7 +178,7 @@ public class PosService {
         }
         BigDecimal billTotal = new BigDecimal(GlobalData.getInstance().getGlobalReceipt().getValue());
         addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "____________");
-        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "TOTAL                           ".substring(0, 32 - formatAmount(billTotal, true).length()) + formatAmount(billTotal, true));
+        addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, "UKUPNO                           ".substring(0, 32 - formatAmount(billTotal, true).length()) + formatAmount(billTotal, true));
         addLine(lines, EcrDef.lineTypeText, EcrDef.lineStyleNormal, " ");
         String qrData = Base64.encodeToString(GlobalData.getInstance().getGlobalReceipt().getId().getBytes(StandardCharsets.UTF_8), Base64.DEFAULT);
         addLine(lines, EcrDef.lineTypeQr, EcrDef.lineStyleCondensed, qrData);
