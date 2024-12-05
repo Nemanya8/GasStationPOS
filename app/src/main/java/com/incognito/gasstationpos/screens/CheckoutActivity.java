@@ -8,6 +8,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.incognito.gasstationpos.MainActivity;
 import com.incognito.gasstationpos.R;
 import com.incognito.gasstationpos.models.AppState;
 import com.incognito.gasstationpos.models.GlobalData;
@@ -31,7 +33,7 @@ public class CheckoutActivity extends AppCompatActivity {
 
         itemContainer = findViewById(R.id.itemContainer);
         tvTotalCost = findViewById(R.id.tvTotalCost);
-        btnPay = findViewById(R.id.btnNext);
+        btnPay = findViewById(R.id.btnPay);
         posService = new PosService(getPackageName(), getApplicationContext());
 
         Receipt receipt = GlobalData.getInstance().getGlobalReceipt();
@@ -101,5 +103,6 @@ public class CheckoutActivity extends AppCompatActivity {
             itemContainer.addView(itemLayout);
         }
     }
+
 
 }

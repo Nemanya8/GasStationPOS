@@ -97,5 +97,19 @@ public class SelectedFuelActivity extends AppCompatActivity {
         double totalPrice = liters * pricePerLiter;
         txtPrice.setText("Cena: " + totalPrice + " RSD");
     }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        resetValues();
+    }
+
+    private void resetValues() {
+        edtLiters.setText("0 L");
+        txtPrice.setText("Cena: 0 RSD");
+        liters = 0;
+    }
+
 }
 

@@ -52,9 +52,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void navigateToSelectedFuel(String fuelType) {
+        var instance = GlobalData.getInstance();
         Intent intent = new Intent(MainActivity.this, SelectedFuelActivity.class);
         intent.putExtra("FUEL_TYPE", fuelType);
         startActivity(intent);
     }
-
 }
